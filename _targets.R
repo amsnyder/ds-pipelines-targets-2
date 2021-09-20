@@ -12,33 +12,28 @@ end_date = "2015-05-01"
 
 p1_targets_list <- list(
   tar_target(
-    site_data_01427207_csv,
-    download_nwis_site_data("01427207", out_file="1_fetch/tmp/nwis_01427207_data.csv", parameterCd = parameter_code, startDate=start_date, endDate=end_date),
-    format = "file"
+    site_data_01427207,
+    download_nwis_site_data("01427207", parameterCd = parameter_code, startDate=start_date, endDate=end_date),
   ),
   tar_target(
-    site_data_01432160_csv,
-    download_nwis_site_data("01432160", out_file="1_fetch/tmp/nwis_01432160_data.csv", parameterCd = parameter_code, startDate=start_date, endDate=end_date),
-    format = "file"
+    site_data_01432160,
+    download_nwis_site_data("01432160", parameterCd = parameter_code, startDate=start_date, endDate=end_date),
   ),
   tar_target(
-    site_data_01435000_csv,
-    download_nwis_site_data("01435000", out_file="1_fetch/tmp/nwis_01435000_data.csv", parameterCd = parameter_code, startDate=start_date, endDate=end_date),
-    format = "file"
+    site_data_01435000,
+    download_nwis_site_data("01435000", parameterCd = parameter_code, startDate=start_date, endDate=end_date),
   ),
   tar_target(
-    site_data_01436690_csv,
-    download_nwis_site_data("01436690", out_file="1_fetch/tmp/nwis_01436690_data.csv", parameterCd = parameter_code, startDate=start_date, endDate=end_date),
-    format = "file"
+    site_data_01436690,
+    download_nwis_site_data("01436690", parameterCd = parameter_code, startDate=start_date, endDate=end_date),
   ),
   tar_target(
-    site_data_01466500_csv,
-    download_nwis_site_data("01466500", out_file="1_fetch/tmp/nwis_01466500_data.csv", parameterCd = parameter_code, startDate=start_date, endDate=end_date),
-    format = "file"
+    site_data_01466500,
+    download_nwis_site_data("01466500", parameterCd = parameter_code, startDate=start_date, endDate=end_date),
   ),
   tar_target(
     site_data,
-    concat_data(files_in = c(site_data_01427207_csv, site_data_01432160_csv, site_data_01435000_csv, site_data_01436690_csv, site_data_01466500_csv)),
+    concat_data(data_in = list(site_data_01427207, site_data_01432160, site_data_01435000, site_data_01436690, site_data_01466500)),
   ),
   tar_target(
     site_info_csv,
