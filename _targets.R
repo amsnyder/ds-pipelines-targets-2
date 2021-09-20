@@ -6,30 +6,34 @@ source("3_visualize/src/plot_timeseries.R")
 options(tidyverse.quiet = TRUE)
 tar_option_set(packages = c("tidyverse", "dataRetrieval")) # Loading tidyverse because we need dplyr, ggplot2, readr, stringr, and purrr
 
+parameter_code = '00010'
+start_date = "2014-05-01"
+end_date = "2015-05-01"
+
 p1_targets_list <- list(
   tar_target(
     site_data_01427207_csv,
-    download_nwis_site_data("01427207", out_file="1_fetch/tmp/nwis_01427207_data.csv", parameterCd = '00010', startDate="2014-05-01", endDate="2015-05-01"),
+    download_nwis_site_data("01427207", out_file="1_fetch/tmp/nwis_01427207_data.csv", parameterCd = parameter_code, startDate=start_date, endDate=end_date),
     format = "file"
   ),
   tar_target(
     site_data_01432160_csv,
-    download_nwis_site_data("01432160", out_file="1_fetch/tmp/nwis_01432160_data.csv", parameterCd = '00010', startDate="2014-05-01", endDate="2015-05-01"),
+    download_nwis_site_data("01432160", out_file="1_fetch/tmp/nwis_01432160_data.csv", parameterCd = parameter_code, startDate=start_date, endDate=end_date),
     format = "file"
   ),
   tar_target(
     site_data_01435000_csv,
-    download_nwis_site_data("01435000", out_file="1_fetch/tmp/nwis_01435000_data.csv", parameterCd = '00010', startDate="2014-05-01", endDate="2015-05-01"),
+    download_nwis_site_data("01435000", out_file="1_fetch/tmp/nwis_01435000_data.csv", parameterCd = parameter_code, startDate=start_date, endDate=end_date),
     format = "file"
   ),
   tar_target(
     site_data_01436690_csv,
-    download_nwis_site_data("01436690", out_file="1_fetch/tmp/nwis_01436690_data.csv", parameterCd = '00010', startDate="2014-05-01", endDate="2015-05-01"),
+    download_nwis_site_data("01436690", out_file="1_fetch/tmp/nwis_01436690_data.csv", parameterCd = parameter_code, startDate=start_date, endDate=end_date),
     format = "file"
   ),
   tar_target(
     site_data_01466500_csv,
-    download_nwis_site_data("01466500", out_file="1_fetch/tmp/nwis_01466500_data.csv", parameterCd = '00010', startDate="2014-05-01", endDate="2015-05-01"),
+    download_nwis_site_data("01466500", out_file="1_fetch/tmp/nwis_01466500_data.csv", parameterCd = parameter_code, startDate=start_date, endDate=end_date),
     format = "file"
   ),
   tar_target(
