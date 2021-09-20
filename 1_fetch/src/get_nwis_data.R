@@ -24,13 +24,11 @@ nwis_site_info <- function(fileout, site_data){
 }
 
 
-download_nwis_site_data <- function(site_num, parameterCd = '00010', startDate="2014-05-01", endDate="2015-05-01"){
+download_nwis_site_data <- function(site_num, out_file, parameterCd = '00010', startDate="2014-05-01", endDate="2015-05-01"){
   
   # Create tmp data directory
   tmp_output_dir =  file.path('1_fetch', 'tmp')
   dir.create(tmp_output_dir, showWarnings = FALSE)
-  
-  filepath <- file.path(tmp_output_dir, paste0('nwis_', site_num, '_data.csv'))
   
   # readNWISdata is from the dataRetrieval package
   data_out <- readNWISdata(sites=site_num, service="iv", 
@@ -43,17 +41,16 @@ download_nwis_site_data <- function(site_num, parameterCd = '00010', startDate="
   }
   # -- end of do-not-edit block
   
-  write_csv(data_out, file = filepath)
-  return(filepath)
+  write_csv(data_out, file = out_file)
+  return(out_file)
 }
 
-concat_data <- function(tmp_output_dir){
-  download_files <-list.files(tmp_output_dir)
+concat_data <- function(files_in){
   data_out <- data.frame()
   # loop through files to download 
-  for (download_file in download_files){
+  for (download_file in files_in){
     # read the downloaded data and append it to the existing data.frame
-    these_data <- read_csv(file.path(tmp_output_dir, download_file), col_types = 'ccTdcc')
+    these_data <- read_csv(download_file, col_types = 'ccTdcc')
     data_out <- bind_rows(data_out, these_data)
   }
   return(data_out)

@@ -8,34 +8,33 @@ tar_option_set(packages = c("tidyverse", "dataRetrieval")) # Loading tidyverse b
 
 p1_targets_list <- list(
   tar_target(
-    site_data_01427207,
-    download_nwis_site_data("01427207"),
+    site_data_01427207_csv,
+    download_nwis_site_data("01427207", out_file="1_fetch/tmp/nwis_01427207_data.csv", parameterCd = '00010', startDate="2014-05-01", endDate="2015-05-01"),
     format = "file"
   ),
   tar_target(
-    site_data_01432160,
-    download_nwis_site_data("01432160"),
+    site_data_01432160_csv,
+    download_nwis_site_data("01432160", out_file="1_fetch/tmp/nwis_01432160_data.csv", parameterCd = '00010', startDate="2014-05-01", endDate="2015-05-01"),
     format = "file"
   ),
   tar_target(
-    site_data_01435000,
-    download_nwis_site_data("01435000"),
+    site_data_01435000_csv,
+    download_nwis_site_data("01435000", out_file="1_fetch/tmp/nwis_01435000_data.csv", parameterCd = '00010', startDate="2014-05-01", endDate="2015-05-01"),
     format = "file"
   ),
   tar_target(
-    site_data_01436690,
-    download_nwis_site_data("01436690"),
+    site_data_01436690_csv,
+    download_nwis_site_data("01436690", out_file="1_fetch/tmp/nwis_01436690_data.csv", parameterCd = '00010', startDate="2014-05-01", endDate="2015-05-01"),
     format = "file"
   ),
   tar_target(
-    site_data_01466500,
-    download_nwis_site_data("01466500"),
+    site_data_01466500_csv,
+    download_nwis_site_data("01466500", out_file="1_fetch/tmp/nwis_01466500_data.csv", parameterCd = '00010', startDate="2014-05-01", endDate="2015-05-01"),
     format = "file"
   ),
-  tar_target(tmp_data_dir, '1_fetch/tmp', format = "file"),
   tar_target(
     site_data,
-    concat_data(tmp_data_dir),
+    concat_data(files_in = c(site_data_01427207_csv, site_data_01432160_csv, site_data_01435000_csv, site_data_01436690_csv, site_data_01466500_csv)),
   ),
   tar_target(
     site_info_csv,
