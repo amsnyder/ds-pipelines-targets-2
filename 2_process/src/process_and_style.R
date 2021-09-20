@@ -1,4 +1,5 @@
-process_data <- function(nwis_data, site_filename){
+process_data <- function(nwis_data_csv, site_filename){
+  nwis_data <- read_csv(nwis_data_csv, col_types = 'ccTdcc')
   nwis_data_clean <- rename(nwis_data, water_temperature = X_00010_00000) %>% 
     select(-agency_cd, -X_00010_00000_cd, -tz_cd)
   site_info <- read_csv(site_filename)
